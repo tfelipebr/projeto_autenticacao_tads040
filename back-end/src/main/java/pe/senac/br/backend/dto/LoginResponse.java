@@ -1,4 +1,4 @@
-package pe.senac.br.backend.auth.dto;
+package pe.senac.br.backend.dto;
 
 public class LoginResponse {
 	  private boolean sucesso;

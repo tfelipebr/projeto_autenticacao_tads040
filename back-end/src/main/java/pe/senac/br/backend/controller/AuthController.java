@@ -1,12 +1,12 @@
-package pe.senac.br.backend.auth.controller;
+package pe.senac.br.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import pe.senac.br.backend.auth.dto.LoginRequest;
-import pe.senac.br.backend.auth.dto.LoginResponse;
-import pe.senac.br.backend.auth.service.AuthService;
+import pe.senac.br.backend.dto.LoginRequest;
+import pe.senac.br.backend.dto.LoginResponse;
+import pe.senac.br.backend.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")

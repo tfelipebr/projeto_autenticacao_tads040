@@ -1,9 +1,9 @@
-package pe.senac.br.backend.auth.service;
+package pe.senac.br.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.senac.br.backend.auth.repository.UsuarioRepository;
+import pe.senac.br.backend.repository.UsuarioRepository;
 
 @Service
 public class AuthService {

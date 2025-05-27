@@ -1,4 +1,4 @@
-package pe.senac.br.backend.auth.model;
+package pe.senac.br.backend.model;
 
 import jakarta.persistence.*;
 
