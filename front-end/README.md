@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Front-end de Login com Next.js, React e TypeScript
 
-## Getting Started
+Este projeto é um exemplo de **tela de login** construída com Next.js (Pages Router), React e TypeScript, que se comunica com um backend via API REST utilizando **axios**. Após autenticar com sucesso, o usuário é redirecionado para uma página de boas-vindas.
 
-First, run the development server:
+## 📁 Estrutura de Diretórios
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+my-project/
+├── src/                 # código auxiliar, hooks, components, etc.
+      ├── pages/
+      │   ├── index.tsx        # Tela de Login
+      │   └── welcome.tsx      # Tela de Boas-vindas pós-login
+      ├── styles/
+      │   └── Login.module.css # Estilos em CSS Modules para a página de login
+├── public/              # Imagens, favicon e ativos estáticos
+├── .gitignore
+├── next.config.ts       # Configurações do Next.js
+├── package.json
+├── tsconfig.json        # Configurações do TypeScript
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Pré-requisitos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Node.js** (versão 14 ou superior)
+* **npm** (ou **yarn**)
+* Backend disponível em `http://localhost:8080/api/auth/login`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  * Deve aceitar requisição POST com payload `{ nomeUsuario, senha }` e devolver JSON:
 
-## Learn More
+    ```jsonc
+    // Sucesso
+    { "sucesso": true, "mensagem": "Login bem-sucedido" }
 
-To learn more about Next.js, take a look at the following resources:
+    // Falha (ex: credenciais inválidas)
+    { "sucesso": false, "mensagem": "Credenciais inválidas" }
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Instalação e Execução
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone este repositório:
 
-## Deploy on Vercel
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   cd my-project
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Instale as dependências:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm install
+   # ou
+   yarn
+   ```
+
+3. Inicie o servidor de desenvolvimento:
+
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
+
+4. Abra no navegador:
+
+   ```
+   http://localhost:3000
+   ```
+
+## 🔄 Fluxo de Login
+
+1. Acesse `http://localhost:3000` e preencha **Usuário** e **Senha**.
+2. Ao clicar em **Entrar**, faz-se um `POST` para `http://localhost:8080/api/auth/login` via axios.
+3. Se o backend responder `{ sucesso: true }`, o usuário é redirecionado para `/welcome?user=<nome>`.
+4. Se `{ sucesso: false }`, a mensagem de erro retornada (`mensagem`) é exibida em tela.
+
+
+## 🛠️ Principais Tecnologias
+
+* [Next.js](https://nextjs.org/) (Pages Router)
+* [React](https://reactjs.org/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Axios](https://axios-http.com/)
+* CSS Modules
+
+---
+
+## 📝 Customização
+
+* **URL do backend**: altere em `pages/index.tsx` conforme necessário.
+* **Estilos**: ajuste `styles/Login.module.css` para outras cores, fontes ou layout.
+* **Rotas**: adicione novas páginas em `pages/` seguindo a convenção `<nome>.tsx`.
+
+---
+
+> **Dica:** para produção, configure variáveis de ambiente (`.env.local`) e use `NEXT_PUBLIC_API_URL` em vez de código fixo.
+
+
